@@ -20,27 +20,9 @@ public class PetResourceTest {
     @Order(1)
     public void testPetEndpoint() {
         given()
-          .when().get("/pets")
+          .when().get("/pets/all")
           .then()
              .statusCode(200);
-
-
-//        given()
-//                .when().get("/add")
-//                .then()
-//                .statusCode(200);
-
-
-
-//             .body(hasItem(
-// 		            allOf(
-//    		                hasEntry("pet_id", "1"),
-//    		                hasEntry("pet_type", "Dog"),
-//    		                hasEntry("pet_name", "Boola"),
-//    		                hasEntry("pet_age", "3")
-//    		            )
-//    		      )
-//    		 );
     }
 
     @Test
@@ -48,14 +30,14 @@ public class PetResourceTest {
     public void testPetsAddEndPointSuccess(){
         given()
                 .header("Content-Type","application/json")
-                .body("{\r\n    \"name\":\"Dane\",\r\n   \"age\":4,\r\n   \"type\":\"Bird\"\r\n}")
+                .body("{\r\n    \"name\":\"Pigeon \",\r\n   \"age\":1,\r\n   \"type\":\"Bird\"\r\n}")
                 .when().post("/pets/add")
                 .then()
                 .assertThat()
                 .statusCode(200)
                 .body("petId",notNullValue())
-                .body("petAge",equalTo(4))
-                .body("petName",equalTo("Dane"))
+                .body("petAge",equalTo(1))
+                .body("petName",equalTo("pigeon "))
                 .body("petType",notNullValue());
 
 
@@ -67,14 +49,13 @@ public class PetResourceTest {
     public void testPetUpdateEndPoint(){
         given()
                 .header("Content-Type","application/json")
-                .pathParam("petId",1)
-                .body("{\n\"name\":\"Poppy\"\n}")
+		.body("{\r\n    \"name\":\"Pigeon \",\r\n   \"id\":1,\r\n   \"age\":1,\r\n   \"type\":\"Bird\"\r\n}")
                 .when().put("/pets/edit/{petId}")
                 .then()
                 .statusCode(200)
                 .body("petId",equalTo(1))
                 .body("petAge",notNullValue())
-                .body("petName",equalTo("Poppy"))
+                .body("petName",equalTo("Pigeon"))
                 .body("petType",notNullValue());
 
     }
