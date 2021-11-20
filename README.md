@@ -33,18 +33,18 @@
        curl -XGET -H "Content-type: application/json" 'http://localhost:8080/pets/1'
 
 ###### Add new Pet
-       curl -XPOST -H "Content-type: application/json" -d '{"age": 4,"name": "donny","type":"cat"}' 'http://localhost:8080/pets/add'
+       curl -XPOST -H "Content-type: application/json" -d '{"age": 4,"name": "Kity","type":"cat"}' 'http://localhost:8080/pets/add'
        
 ###### Search Pet by using pet id
         curl -XGET -H "Content-type: application/json" 'http://localhost:8080/pets/search?id=3'
         
-       curl -XGET -H "Content-type: application/json" 'http://localhost:8080/pets/search?name=Peththappu'
+       curl -XGET -H "Content-type: application/json" 'http://localhost:8080/pets/search?name=Boola'
 
 ###### Delete Pet
         curl -XDELETE -H "Content-type: application/json" 'http://localhost:8080/pets/delete/1'
 
 ###### Update Pet
-        curl -XPUT -H "Content-type: application/json" -d '{"age": 5,"name": "Micy"}' 'http://localhost:8080/pets/update/1'
+        curl -XPUT -H "Content-type: application/json" -d '{ "petAge": 4,"petId": 1,"petName": "Roo","petType": "Dog"}' 'http://localhost:8080/pets/update'
 
 
 
